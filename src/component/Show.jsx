@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { NavLink } from 'react-router-dom';
 import { getAsyncShow } from '../actions/show.js';
 
 class Show extends Component {
@@ -16,7 +17,12 @@ class Show extends Component {
  
  submitShow = (values) => {
   const id = this.props.match.params.id;
- 
+  (id !== "new")
+  ? this.changeShow(values, id)
+  :this.newShow(values) ;
+}
+
+changeShow = (values, id) => {
   const config = {
     method: 'PUT',
     headers: {
@@ -38,7 +44,29 @@ class Show extends Component {
     });
 }
 
-  
+newShow = (values)=> {
+  const config = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(values),
+  };
+  const url = `http://localhost:3000/performance`;
+  fetch(url, config)
+    .then((res) => {
+      if (res.ok) {
+        alert(`Spectacle ajouté!`);
+        this.props.history.push('/adminshow');
+      } else {
+        alert(res.error);
+      }
+    }).catch(e => {
+      alert('Erreur lors de la création du spectacle');
+    });
+}
+
+
 
   render() {
   
@@ -65,7 +93,9 @@ class Show extends Component {
               <Field type="number" name="vip_cap" component="input" placeholder={vip_cap} />
               <input type="submit" value="Envoyer" id="submitButton" />
             </form>
-
+            <NavLink activeClassName="active" to={`/adminshow/`}>
+              <button type="button" className="ResumeButton">retour aux spectacles</button>
+            </NavLink>
          </div>
         }
       </div>

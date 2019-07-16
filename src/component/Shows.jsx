@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getAsyncShows } from '../actions/shows.js';
+import { NavLink } from 'react-router-dom';
+import ShowsDisplay from './ShowsDisplay';
 
 class Shows extends Component {
 
@@ -10,10 +12,15 @@ class Shows extends Component {
     getAsyncShows()
   }
 
+    
   render() {
     const { shows, loading, error } = this.props;
     return(
       <div className='Shows'>
+        <h1>Liste des spectacles</h1>
+        <NavLink activeClassName="active" to={`/adminshow/new`}>
+          <button type="button" className="ResumeButton">Ajouter une date</button>
+        </NavLink>
         {
        (loading)
          ? <div>Chargement en cours veuillez patienter...</div>
@@ -26,11 +33,7 @@ class Shows extends Component {
         }
         {
           shows.map(show => (
-            <div key={show.id}>
-              { show.city }
-              { show.date }
-              
-            </div>
+            <ShowsDisplay key={show.id} show={show} deleteShow={this.deleteShow} />
           ))
         }
       </div>
