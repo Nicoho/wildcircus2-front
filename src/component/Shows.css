@@ -1,0 +1,16 @@
+.Shows {
+  border: solid 4px;
+  border-color: black;
+  width:80%;
+  margin:auto;
+  padding-bottom: 50px;
+}
+
+.Shows h1 {
+  text-align: center;
+}
+
+.ResumeButton {
+  margin-left: 10px;
+  margin-bottom: 10px;
+}

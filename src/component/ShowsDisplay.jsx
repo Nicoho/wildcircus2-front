@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import moment from 'moment';
-//import './ResumeWasteland.scss';
+import './ShowsDisplay.css';
 class ShowsDisplay extends Component{
 
   deleteShow = () => {
@@ -26,6 +26,7 @@ render(){
   const { show: { id, city, date }} = this.props
   return (
     <div className="ShowsDisplay">
+      <div className="showInfo">
       <p>
         <span className="resumeKey">
           Ville:&nbsp;
@@ -38,11 +39,14 @@ render(){
         </span>
         {moment(date).format('DD MM YYYY')}
       </p>
-      <NavLink activeClassName="active" to={`/adminshow/${id}`}>
-        <button type="button" className="ResumeButton">Voir</button>
-      </NavLink>
-      <button onClick={this.deleteShow}> Supprimer </button>
+      </div>
+      <div className="showsButton">
+        <NavLink activeClassName="active" to={`/adminshow/${id}`}>
+          <button type="button" className="ResumeButton">Voir</button>
+        </NavLink>
+        <button onClick={this.deleteShow} className="deleteButton"> Supprimer </button>
 
+      </div>
     </div>
   );
 }

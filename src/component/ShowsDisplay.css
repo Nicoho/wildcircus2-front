@@ -1,0 +1,28 @@
+.ShowsDisplay {
+  border: solid 2px;
+  border-color: rgb(9, 9, 92);
+  width:80%;
+  margin:auto;
+  margin-top:5px;
+  display:flex;
+  flex-direction: column;
+}
+
+.ShowsDisplay .showInfo {
+  text-align: center;
+}
+.showsButton {
+  display:flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.deleteButton,
+.ResumeButton {
+  width:100px;
+  margin-left:5px;
+}
+
+.resumeKey {
+  font-weight:bold;
+}

@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { getAsyncShows } from '../actions/shows.js';
 import { NavLink } from 'react-router-dom';
 import ShowsDisplay from './ShowsDisplay';
+import'./Shows.css';
 
 class Shows extends Component {
 
