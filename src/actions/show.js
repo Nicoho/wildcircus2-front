@@ -1,27 +1,27 @@
-export const startShows = () => ({
-  type: 'START_SHOWS',
+export const startShow = () => ({
+  type: 'START_SHOW',
 });
 
-export const SuccessShows = (shows) => ({
-  type: 'SUCCESS_SHOWS',
-  shows
+export const successShow = (show) => ({
+  type: 'SUCCESS_SHOW',
+  show
 });
 
-export const ErrorShows = err => ({
-  type: 'ERROR_SHOWS',
+export const errorShow = err => ({
+  type: 'ERROR_SHOW',
   err,
 });
 
-export const getAsyncShows = () => (
+export const getAsyncShow = id => (
   (dispatch) => {
-    dispatch(startShows());
-    fetch('http://localhost:3000/performance')
+    dispatch(startShow());
+    fetch(`http://localhost:3000/performance/${id}`)
       .then(res => res.json())
-      .then((shows) => {
-        dispatch(SuccessShows(shows));
+      .then((show) => {
+        dispatch(successShow(show));
       })
       .catch(() => {
-        dispatch(ErrorShows('Erreur lors du chargement des spectacles'));
+        dispatch(errorShow('Erreur lors du chargement du spectacle'));
       });
   }
 );

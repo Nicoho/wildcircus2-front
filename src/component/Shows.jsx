@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getAsyncShows } from '../actions/show.js';
+import { getAsyncShows } from '../actions/shows.js';
 
 class Shows extends Component {
 
