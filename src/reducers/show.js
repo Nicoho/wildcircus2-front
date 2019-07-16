@@ -13,6 +13,7 @@ const show = (state = initialState, action) => {
       };
     }
     case 'SUCCESS_SHOW': {
+
       return {
         loading: false,
         list: action.show,

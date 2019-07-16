@@ -32,7 +32,7 @@ class Shows extends Component {
               
             </div>
           ))
-        };
+        }
       </div>
     )
 

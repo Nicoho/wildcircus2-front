@@ -12,6 +12,13 @@ export const errorShow = err => ({
   err,
 });
 
+export const changeShowElement = (value, id) => ({
+  type: 'CHANGE_SHOW',
+  value,
+  id,
+
+});
+
 export const getAsyncShow = id => (
   (dispatch) => {
     dispatch(startShow());

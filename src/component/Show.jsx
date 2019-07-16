@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getAsyncShow } from '../actions/show.js';
@@ -11,11 +12,38 @@ class Show extends Component {
      getAsyncShow(id)
   }
 
+
+ 
+ submitShow = (values) => {
+  const id = this.props.match.params.id;
+ 
+  const config = {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(values),
+  };
+  const url = `http://localhost:3000/performance/${id}`;
+  fetch(url, config)
+    .then((res) => {
+      if (res.ok) {
+        alert(`Spectacle modifié avec l'ID ${id}!`);
+        this.props.history.push('/adminshow');
+      } else {
+        alert(res.error);
+      }
+    }).catch(e => {
+      alert('Erreur lors de la modification du spectacle');
+    });
+}
+
+  
+
   render() {
   
-    const { show, loading, error } = this.props;
-    console.log(show)
-    return(
+    const { handleSubmit, loading, error, show:{ city, date, vip_cap }} = this.props;
+     return(
       <div className='Show'>
         {
        (loading)
@@ -29,7 +57,15 @@ class Show extends Component {
         }
         {
           <div>
-          { show.city}
+            <h2>Gestion d'un spectacle</h2>
+
+            <form className='showForm' onSubmit={handleSubmit(this.submitShow)}>
+              <Field type="text" name="city" component="input" placeholder={city} />
+              <Field type="date" name="date" component="input" placeholder={date} />
+              <Field type="number" name="vip_cap" component="input" placeholder={vip_cap} />
+              <input type="submit" value="Envoyer" id="submitButton" />
+            </form>
+
          </div>
         }
       </div>
@@ -39,6 +75,9 @@ class Show extends Component {
 }
 
 const mstp = state => ({
+  nitialValues: {
+    ...state.show.list,
+  },
   loading: state.show.loading,
   show: state.show.list,
   error: state.show.error,
@@ -46,4 +85,7 @@ const mstp = state => ({
 
 const mdtp = dispatch => bindActionCreators({ getAsyncShow }, dispatch);
 
-export default connect(mstp, mdtp)(Show);
+export default (connect(mstp, mdtp)(reduxForm({
+  form: 'showForm',
+  enableReinitialize: true,
+ })(Show)));
