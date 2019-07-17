@@ -10,6 +10,7 @@
 
 .ShowsDisplay .showInfo {
   text-align: center;
+  font-size: 20px;
 }
 .showsButton {
   display:flex;

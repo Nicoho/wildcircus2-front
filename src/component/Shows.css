@@ -3,9 +3,14 @@
   border-color: black;
   width:80%;
   margin:auto;
+  margin-top: 10px;
   padding-bottom: 50px;
+  background-color: beige;
 }
-
+ .newButton {
+   margin-left: 10px;
+   margin-bottom: 10px;
+ }
 .Shows h1 {
   text-align: center;
 }

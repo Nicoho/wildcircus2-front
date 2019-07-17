@@ -1,30 +1,24 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import moment from 'moment';
+import './UserShowsDisplay.css';
 
 function UserShowsDisplay({show}) {
 return(
   <div className="UserShowsDisplay">
     <div className="showInfo">
-      <p>
-        <span className="resumeKey">
+      <p className="showInfos">
+        <span>
           Ville:&nbsp;
         </span>
         {show.city}
       </p>
-      <p>
-        <span className="resumeKey">
+      <p className="showInfos">
+        <span>
           Date de la représentation:&nbsp;
         </span>
         {moment(show.date).format('DD MM YYYY')}
       </p>
-      </div>
-      <div className="showsUserButton">
-        <NavLink activeClassName="active" to={`/adminshow/${show.id}`}>
-          <button type="button" className="ResumeButton">Voir</button>
-        </NavLink>
-      </div>
-    
+      </div>  
   </div>
 )
 }

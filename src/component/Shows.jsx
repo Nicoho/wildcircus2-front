@@ -20,7 +20,10 @@ class Shows extends Component {
       <div className='Shows'>
         <h1>Liste des spectacles</h1>
         <NavLink activeClassName="active" to={`/adminshow/new`}>
-          <button type="button" >Ajouter une date</button>
+          <button type="button" className="newButton">Ajouter une date</button>
+        </NavLink>
+        <NavLink activeClassName="active" to={`/`}>
+          <button type="button" className="newButton">retour au site</button>
         </NavLink>
         {
        (loading)
