@@ -13,7 +13,6 @@ class UserShows extends Component {
 
   render() {
     const { shows, loading, error } = this.props;
-    console.log(shows)
     return(
       <div className="UserShows">
         <h1>Prochaines représentations</h1> 

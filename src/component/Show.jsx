@@ -17,6 +17,7 @@ class Show extends Component {
 
  
  submitShow = (values) => {
+   console.log(values)
   const id = this.props.match.params.id;
   (id !== "new")
   ? this.changeShow(values, id)
@@ -46,12 +47,19 @@ changeShow = (values, id) => {
 }
 
 newShow = (values)=> {
+  const newValues ={
+    city:values.city,
+    date: values.date,
+    vip_cap: values.vip_cap,
+    lat: values.lat,
+    longitude: values.longitude
+  }
   const config = {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(values),
+    body: JSON.stringify(newValues),
   };
   const url = `http://localhost:3000/performance`;
   fetch(url, config)
@@ -92,6 +100,8 @@ newShow = (values)=> {
               <Field type="text" name="city" component="input"  />
               <Field type="date" name="date" component="input"  />
               <Field type="number" name="vip_cap" component="input" />
+              <Field type="number" step="any" name="lat" component="input" />
+              <Field type="number" step="any" name="longitude" component="input" />
               <input type="submit" value="Envoyer" id="submitButton" />
             </form>
             <NavLink activeClassName="active" to={`/adminshow/`}>
