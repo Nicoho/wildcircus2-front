@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import moment from 'moment'
 import { NavLink } from 'react-router-dom';
 import { getAsyncShow } from '../actions/show.js';
 
@@ -70,7 +71,7 @@ newShow = (values)=> {
 
   render() {
   
-    const { handleSubmit, loading, error, show:{ city, date, vip_cap }} = this.props;
+    const { handleSubmit, loading, error} = this.props;
      return(
       <div className='Show'>
         {
@@ -88,9 +89,9 @@ newShow = (values)=> {
             <h2>Gestion d'un spectacle</h2>
 
             <form className='showForm' onSubmit={handleSubmit(this.submitShow)}>
-              <Field type="text" name="city" component="input" placeholder={city} />
-              <Field type="date" name="date" component="input" placeholder={date} />
-              <Field type="number" name="vip_cap" component="input" placeholder={vip_cap} />
+              <Field type="text" name="city" component="input"  />
+              <Field type="date" name="date" component="input"  />
+              <Field type="number" name="vip_cap" component="input" />
               <input type="submit" value="Envoyer" id="submitButton" />
             </form>
             <NavLink activeClassName="active" to={`/adminshow/`}>
@@ -105,8 +106,9 @@ newShow = (values)=> {
 }
 
 const mstp = state => ({
-  nitialValues: {
+  initialValues: {
     ...state.show.list,
+    date: moment(state.show.list.date).format('YYYY-MM-DD')
   },
   loading: state.show.loading,
   show: state.show.list,

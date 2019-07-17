@@ -1,27 +1,22 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getAsyncShows } from '../actions/shows.js';
-import { NavLink } from 'react-router-dom';
-import ShowsDisplay from './ShowsDisplay';
-import'./Shows.css';
+import UserShowsDisplay from './UserShowsDisplay';
 
-class Shows extends Component {
+class UserShows extends Component {
 
   componentDidMount() {
     const { getAsyncShows } = this.props;
     getAsyncShows()
   }
 
-    
   render() {
     const { shows, loading, error } = this.props;
+    console.log(shows)
     return(
-      <div className='Shows'>
-        <h1>Liste des spectacles</h1>
-        <NavLink activeClassName="active" to={`/adminshow/new`}>
-          <button type="button" >Ajouter une date</button>
-        </NavLink>
+      <div className="UserShows">
+        <h1>Prochaines représentations</h1> 
         {
        (loading)
          ? <div>Chargement en cours veuillez patienter...</div>
@@ -34,14 +29,12 @@ class Shows extends Component {
         }
         {
           shows.map(show => (
-            <ShowsDisplay key={show.id} show={show} deleteShow={this.deleteShow} />
+            <UserShowsDisplay key={show.id} show={show} />
           ))
         }
       </div>
-    )
-
-  };
-}
+  )}
+};
 
 const mstp = state => ({
   loading: state.shows.loading,
@@ -50,4 +43,5 @@ const mstp = state => ({
 });
 const mdtp = dispatch => bindActionCreators({ getAsyncShows }, dispatch);
 
-export default connect(mstp, mdtp)(Shows);
+export default connect(mstp, mdtp)(UserShows);
+
