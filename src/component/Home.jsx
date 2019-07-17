@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import UserShows from './UserShows';
+import MapShows from './MapShows';
 
 
 function Home() {
@@ -11,6 +12,7 @@ return(
           <button type="button" className="ResumeButton">page admin</button>
       </NavLink>
      <UserShows />
+     <MapShows />
   </div>
 )
 }
