@@ -1,0 +1,33 @@
+.Show {
+  width: 80%;
+  margin:auto;
+  margin-top:30px;
+  border:solid 5px;
+  border-color: rgb(15, 15, 97);
+  display:flex;
+  justify-content: center;
+
+}
+
+.showForm {
+  border:solid 5px;
+  border-color: rgb(15, 15, 97);
+  padding: 40px;
+  display:flex;
+  font-size: 20px;
+  flex-direction: column;
+  margin-bottom: 20px;
+  align-items: center;
+}
+.labelField {
+ margin-bottom:8px;
+}
+
+.Show h2 {
+  text-align: center;
+}
+
+.ReturnButton {
+  text-align: center;
+  margin-bottom: 20px;
+}

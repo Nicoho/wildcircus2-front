@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getAsyncShows } from '../actions/shows.js';
 import UserShowsDisplay from './UserShowsDisplay';
+import './UserShows.css';
 
 class UserShows extends Component {
 

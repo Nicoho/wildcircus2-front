@@ -10,9 +10,17 @@ return(
     <p>blabla</p>
     <NavLink activeClassName="active" to={`/adminshow`}>
           <button type="button" className="ResumeButton">page admin</button>
-      </NavLink>
-     <UserShows />
+    </NavLink>
+    <div className='container'>
+      <div className="row">
+        <div className='col-sm-12 col-md-4'>
+          <UserShows />
+        </div>
+
+      </div>
      <MapShows />
+    </div>
+    
   </div>
 )
 }

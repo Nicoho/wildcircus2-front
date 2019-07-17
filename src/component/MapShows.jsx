@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Map, Marker, TileLayer, Popup } from 'react-leaflet';
 import moment from 'moment';
+import './MapShows.css'
 
 class MapShows extends Component {
 

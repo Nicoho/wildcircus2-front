@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import moment from 'moment'
 import { NavLink } from 'react-router-dom';
 import { getAsyncShow } from '../actions/show.js';
+import './Show.css';
 
 class Show extends Component {
 
@@ -50,7 +51,6 @@ newShow = (values)=> {
   const newValues ={
     city:values.city,
     date: values.date,
-    vip_cap: values.vip_cap,
     lat: values.lat,
     longitude: values.longitude
   }
@@ -97,15 +97,29 @@ newShow = (values)=> {
             <h2>Gestion d'un spectacle</h2>
 
             <form className='showForm' onSubmit={handleSubmit(this.submitShow)}>
-              <Field type="text" name="city" component="input"  />
+              <label htmlFor="city" className="labelField">
+                Ville:&nbsp;
+                <Field type="text" name="city" component="input"  />
+              </label>
+              <label htmlFor="city" className="labelField">
+                Date:&nbsp;
               <Field type="date" name="date" component="input"  />
-              <Field type="number" name="vip_cap" component="input" />
-              <Field type="number" step="any" name="lat" component="input" />
-              <Field type="number" step="any" name="longitude" component="input" />
+              </label>
+              
+              <label htmlFor="city" className="labelField">
+                Latitude:&nbsp;
+                <Field type="number" step="any" name="lat" component="input" />
+              </label>
+              
+              <label htmlFor="city" className="labelField">
+                Longitude:&nbsp;
+                <Field type="number" step="any" name="longitude" component="input" />
+              </label>
+              
               <input type="submit" value="Envoyer" id="submitButton" />
             </form>
             <NavLink activeClassName="active" to={`/adminshow/`}>
-              <button type="button" className="ResumeButton">retour aux spectacles</button>
+              <button type="button" className="ReturnButton">retour aux spectacles</button>
             </NavLink>
          </div>
         }
