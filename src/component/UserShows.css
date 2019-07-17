@@ -1,4 +1,16 @@
 .UserShows {
   border: solid 5px;
-  border-color: red;
+  border-color: rgb(143, 17, 17);
+  margin-bottom: 15px;
+  background-color: beige;
+}
+
+.UserShows h1 {
+  text-align: center;
+}
+
+@media screen and (max-width: 640px) {
+  .UserShows h1 {
+    font-size: 25px;
+  }
 }

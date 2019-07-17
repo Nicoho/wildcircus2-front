@@ -14,7 +14,7 @@ class MapShows extends Component {
         <Map
           style={
           {
-            width: '400px',
+            widthmax: '400px',
             height: '400px',
             margin: 'auto',
           }}

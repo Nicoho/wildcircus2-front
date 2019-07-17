@@ -22,6 +22,9 @@ class Shows extends Component {
         <NavLink activeClassName="active" to={`/adminshow/new`}>
           <button type="button" className="newButton">Ajouter une date</button>
         </NavLink>
+        <NavLink activeClassName="active" to={`/`}>
+          <button type="button" className="newButton">retour au site</button>
+        </NavLink>
         {
        (loading)
          ? <div>Chargement en cours veuillez patienter...</div>
